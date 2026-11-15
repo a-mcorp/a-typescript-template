@@ -16,6 +16,13 @@ Template
 ### Security
 -->
 
+## [Unreleased] - 2026-11-15
+
+### Changed
+- `README.md` layout
+  - Features and two example screenshots combined in one table: the features span the full width, with the screenshots side by side below (`{example-N-title}` and `{example-N-image}` placeholders, images in `docs/`).
+  - Dependencies and Usage placed side by side in a two-column table, keeping their list formatting; the separate Example section was removed, and Repository structure became a level 3 heading.
+
 ## [1.0.0] - 2026-11-15
 
 ### Added

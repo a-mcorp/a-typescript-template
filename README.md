@@ -13,11 +13,37 @@
   <!-- - Dependency-2: [{dependency-2-name}]({dependency-2-license}) -->
 
 ## Features
+<table>
+<tr>
+<th colspan="2">Features</th>
+</tr>
+<tr>
+<td colspan="2">
+
 - {feature-1}
 - {feature-2}
 
+</td>
+</tr>
+<tr>
+<th>{example-1-title}</th>
+<th>{example-2-title}</th>
+</tr>
+<tr>
+<td align="center"><img src="docs/{example-1-image}" alt="{example-1-title}" width="480"></td>
+<td align="center"><img src="docs/{example-2-image}" alt="{example-2-title}" width="370"></td>
+</tr>
+</table>
+
 ## Setup
-### Dependencies
+<table>
+<tr>
+<th>Dependencies</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td valign="top">
+
   - Language: [__TypeScript__](https://www.typescriptlang.org/) (strict)
   - Runtime: [__Deno__](https://github.com/denoland/deno) __{deno-version}__
   - Manager: [__deno__](https://docs.deno.com/runtime/fundamentals/modules/) (built-in, [JSR](https://jsr.io/) and `npm:` packages)
@@ -27,6 +53,27 @@
       - [deno fmt](https://docs.deno.com/runtime/reference/cli/fmt/)
       - [deno lint](https://docs.deno.com/runtime/reference/cli/lint/)
       - [deno check](https://docs.deno.com/runtime/reference/cli/check/)
+
+</td>
+<td valign="top">
+
+  - project
+    - `deno task start`
+  - local tests
+    - `deno task test`
+  - local CI
+    - `lefthook run check`
+      - Files must be first added by `git add` for `lefthook run` to detect.
+      - The commands use the `deno` from the activated `denoenv-{deno-version}`.
+      - Do not run `lefthook install`, as it would install git hooks.
+    <!-- - `deno task check` (the code checks, without lefthook) -->
+  - local CD
+    - AppImage deployment
+      - See [AppImage/README.md](AppImage/README.md)
+
+</td>
+</tr>
+</table>
 
 ### Installation
 Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version}`):
@@ -77,22 +124,7 @@ Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version
   1. `deno install` (installs the dependencies from `deno.jsonc` and `deno.lock` into `DENO_DIR`)
   2. double check with `which deno` (Linux) or `Get-Command deno` (Windows), and `deno info` (shows the `DENO_DIR` location)
 
-### Usage
-  - project
-    - `deno task start`
-  - local tests
-    - `deno task test`
-  - local CI
-    - `lefthook run check`
-      - Files must be first added by `git add` for `lefthook run` to detect.
-      - The commands use the `deno` from the activated `denoenv-{deno-version}`.
-      - Do not run `lefthook install`, as it would install git hooks.
-    <!-- - `deno task check` (the code checks, without lefthook) -->
-  - local CD
-    - AppImage deployment
-      - See [AppImage/README.md](AppImage/README.md)
-
-#### Repository structure
+### Repository structure
 ```
 .
 ├── .github
@@ -111,10 +143,6 @@ Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version
 ├── LICENSE                        # Project license
 └── README.md                      # Project documentation
 ```
-
-## Example
-### {example-1-title}
-{...}
 
 <!-- 
 ## Troubleshooting
