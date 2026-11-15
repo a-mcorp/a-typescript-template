@@ -1,0 +1,23 @@
+# ================================
+# Name: 'a-javascript-template'/lefthook.yml
+# Author: 'a-matthew'/Mateusz A.
+# Year: 2026
+# ================================
+
+# https://lefthook.dev/
+# Auto-generated: A local bundle of formatters and linters, run with `lefthook run check`. No git hooks are installed.
+
+check:
+  commands:
+    deno-fmt:
+      name: "deno - format"
+      glob: "*.{ts,tsx,js,jsx,json,jsonc,yaml,yml}"
+      run: deno fmt {all_files}
+    deno-lint:
+      name: "deno - lint"
+      glob: "*.{ts,tsx,js,jsx}"
+      run: deno lint --fix {all_files}
+    deno-check:
+      name: "deno - check"
+      glob: "*.{ts,tsx}"
+      run: deno check {all_files} # https://docs.deno.com/runtime/reference/cli/check/
