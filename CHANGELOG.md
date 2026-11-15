@@ -21,6 +21,7 @@ Template
 ### Added
 - Project setup
   - Windows (PowerShell) and Linux installation steps for a project-local `denoenv-{deno-version}` environment (Deno binary, `DENO_DIR` cache, `lefthook` and `appimagetool`), without install scripts.
+  - Copy-paste installation commands (Bash one-liners, PowerShell blocks) with `deno` and `lefthook` version variables and automatic SHA-256 validation against the release checksums.
   - `deno.jsonc` with placeholder project metadata, tasks (`start`, `test`, `check`, `compile`, `compile-appimage`) and an empty import map.
   - Deno and TypeScript `.gitignore`, covering Node.js compatibility, coverage, bundlers, web frameworks, hosting platforms and AppImage outputs.
   - `LICENSE` (GPL-3.0).

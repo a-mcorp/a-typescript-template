@@ -29,48 +29,64 @@
       - [deno check](https://docs.deno.com/runtime/reference/cli/check/)
 
 ### Installation
-{...}
-<!-- Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version}`) -->
-  <!-- - Windows (PowerShell)
-    - `cd {path}\{project-name}`
-    - `Invoke-WebRequest -OutFile deno.zip https://github.com/denoland/deno/releases/download/v{deno-version}/deno-x86_64-pc-windows-msvc.zip`
-    - `(Get-FileHash deno.zip).Hash` and compare it with the `deno-x86_64-pc-windows-msvc.zip.sha256sum` file on the [release](https://github.com/denoland/deno/releases) page
-    - `Expand-Archive deno.zip -DestinationPath denoenv-{deno-version}\bin; Remove-Item deno.zip` <sub>suggested</sub>
-    - `Invoke-WebRequest -OutFile denoenv-{deno-version}\bin\lefthook.exe https://github.com/evilmartians/lefthook/releases/download/v{lefthook-version}/lefthook_{lefthook-version}_Windows_x86_64.exe`
-    - `(Get-FileHash denoenv-{deno-version}\bin\lefthook.exe).Hash` and compare it with `lefthook_checksums.txt` on the [release](https://github.com/evilmartians/lefthook/releases) page
-    - activate (per shell session):
-      - `$env:Path = "$PWD\denoenv-{deno-version}\bin;$env:Path"`
-      - `$env:DENO_DIR = "$PWD\denoenv-{deno-version}\cache"`
-      - `$env:DENO_INSTALL_ROOT = "$PWD\denoenv-{deno-version}"`
+Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version}`):
+  - Windows (PowerShell)
+    - set the versions (per shell session)
+      ```powershell
+      cd {path}\{project-name}; $denoVersion = "{deno-version}"; $lefthookVersion = "{lefthook-version}"
+      ```
+    - download, validate and unpack Deno
+      ```powershell
+      Invoke-WebRequest -OutFile deno.zip "https://github.com/denoland/deno/releases/download/v$denoVersion/deno-x86_64-pc-windows-msvc.zip"
+      Invoke-WebRequest -OutFile deno.zip.sha256sum "https://github.com/denoland/deno/releases/download/v$denoVersion/deno-x86_64-pc-windows-msvc.zip.sha256sum"
+      $expected = [regex]::Match((Get-Content -Raw deno.zip.sha256sum), '[0-9A-Fa-f]{64}').Value
+      if ((Get-FileHash deno.zip).Hash -eq $expected) { Expand-Archive deno.zip -DestinationPath "denoenv-$denoVersion\bin" } else { Write-Error "Checksum mismatch: deno.zip" }
+      Remove-Item deno.zip, deno.zip.sha256sum
+      ```
+    - download and validate lefthook
+      ```powershell
+      Invoke-WebRequest -OutFile "denoenv-$denoVersion\bin\lefthook.exe" "https://github.com/evilmartians/lefthook/releases/download/v$lefthookVersion/lefthook_${lefthookVersion}_Windows_x86_64.exe"
+      Invoke-WebRequest -OutFile lefthook_checksums.txt "https://github.com/evilmartians/lefthook/releases/download/v$lefthookVersion/lefthook_checksums.txt"
+      $expected = (Get-Content lefthook_checksums.txt | Where-Object { $_ -like "* lefthook_${lefthookVersion}_Windows_x86_64.exe" }) -replace ' .*'
+      if ((Get-FileHash "denoenv-$denoVersion\bin\lefthook.exe").Hash -ne $expected) { Remove-Item "denoenv-$denoVersion\bin\lefthook.exe"; Write-Error "Checksum mismatch: lefthook.exe" }
+      Remove-Item lefthook_checksums.txt
+      ```
+    - activate (per shell session)
+      ```powershell
+      $env:Path = "$PWD\denoenv-$denoVersion\bin;$env:Path"; $env:DENO_DIR = "$PWD\denoenv-$denoVersion\cache"; $env:DENO_INSTALL_ROOT = "$PWD\denoenv-$denoVersion"
+      ```
     - everything below
   - Linux
-    - `cd {path}/{project-name}`
-    - `curl -fLo deno.zip https://github.com/denoland/deno/releases/download/v{deno-version}/deno-x86_64-unknown-linux-gnu.zip`
-    - `sha256sum deno.zip` and compare it with the `deno-x86_64-unknown-linux-gnu.zip.sha256sum` file on the [release](https://github.com/denoland/deno/releases) page
-    - `unzip deno.zip -d denoenv-{deno-version}/bin && rm deno.zip` <sub>suggested</sub>
-    - `curl -fLo denoenv-{deno-version}/bin/lefthook https://github.com/evilmartians/lefthook/releases/download/v{lefthook-version}/lefthook_{lefthook-version}_Linux_x86_64`
-    - `sha256sum denoenv-{deno-version}/bin/lefthook` and compare it with `lefthook_checksums.txt` on the [release](https://github.com/evilmartians/lefthook/releases) page
-    - `chmod +x denoenv-{deno-version}/bin/lefthook`
-    - activate (per shell session):
-      - `export PATH="$PWD/denoenv-{deno-version}/bin:$PATH"`
-      - `export DENO_DIR="$PWD/denoenv-{deno-version}/cache"`
-      - `export DENO_INSTALL_ROOT="$PWD/denoenv-{deno-version}"`
+    - set the versions (per shell session)
+      ```bash
+      cd {path}/{project-name} && deno_version="{deno-version}" && lefthook_version="{lefthook-version}"
+      ```
+    - download, validate and unpack Deno
+      ```bash
+      mkdir -p "denoenv-$deno_version/bin" && curl -fLo deno.zip "https://github.com/denoland/deno/releases/download/v$deno_version/deno-x86_64-unknown-linux-gnu.zip" && echo "$(curl -fsL "https://github.com/denoland/deno/releases/download/v$deno_version/deno-x86_64-unknown-linux-gnu.zip.sha256sum" | grep -oiE '[0-9a-f]{64}' | tr A-F a-f)  deno.zip" | sha256sum -c - && unzip deno.zip -d "denoenv-$deno_version/bin" && rm deno.zip
+      ```
+    - download and validate lefthook
+      ```bash
+      curl -fLo "denoenv-$deno_version/bin/lefthook" "https://github.com/evilmartians/lefthook/releases/download/v$lefthook_version/lefthook_${lefthook_version}_Linux_x86_64" && echo "$(curl -fsL "https://github.com/evilmartians/lefthook/releases/download/v$lefthook_version/lefthook_checksums.txt" | grep " lefthook_${lefthook_version}_Linux_x86_64\$" | cut -d' ' -f1)  denoenv-$deno_version/bin/lefthook" | sha256sum -c - && chmod +x "denoenv-$deno_version/bin/lefthook"
+      ```
+    - activate (per shell session)
+      ```bash
+      export PATH="$PWD/denoenv-$deno_version/bin:$PATH" DENO_DIR="$PWD/denoenv-$deno_version/cache" DENO_INSTALL_ROOT="$PWD/denoenv-$deno_version"
+      ```
     - everything below
   1. `deno install` (installs the dependencies from `deno.jsonc` and `deno.lock` into `DENO_DIR`)
-  2. double check with `which deno` (Linux) or `Get-Command deno` (Windows), and `deno info` (shows the `DENO_DIR` location) -->
+  2. double check with `which deno` (Linux) or `Get-Command deno` (Windows), and `deno info` (shows the `DENO_DIR` location)
 
 ### Usage
   - project
-    - {...}
-    <!-- - `deno task start` -->
+    - `deno task start`
   - local tests
-    - {...}
-    <!-- - `deno task test` -->
+    - `deno task test`
   - local CI
-    <!-- - `lefthook run check` -->
-    <!-- - - Files must be first added by `git add` for `lefthook run` to detect. -->
-    <!-- - - The commands use the `deno` from the activated `denoenv-{deno-version}`. -->
-    <!-- - - Do not run `lefthook install`, as it would install git hooks. -->
+    - `lefthook run check`
+      - Files must be first added by `git add` for `lefthook run` to detect.
+      - The commands use the `deno` from the activated `denoenv-{deno-version}`.
+      - Do not run `lefthook install`, as it would install git hooks.
     <!-- - `deno task check` (the code checks, without lefthook) -->
   - local CD
     - AppImage deployment
