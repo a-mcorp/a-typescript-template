@@ -3,7 +3,7 @@
 #   `vendor/` is created by `"vendor": true` in `deno.jsonc`; commit it only for fully offline builds.
 # deno.lock
 vendor/
-#   Project-local Deno environment (binary, cache and tools), the equivalent of a Python `venv`.
+#   Project-local Deno environment (binary, cache and tools).
 denoenv-*/
 
 # Node.js compatibility

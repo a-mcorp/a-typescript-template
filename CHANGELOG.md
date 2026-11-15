@@ -16,12 +16,11 @@ Template
 ### Security
 -->
 
-## [Unreleased] - 2026-11-15
+## [1.0.0] - 2026-11-15
 
 ### Added
 - Project setup
-  - Converted from 'a-python-template' to TypeScript on the Deno runtime.
-  - Windows (PowerShell) and Linux installation steps for a project-local `denoenv-{deno-version}` environment (Deno binary, `DENO_DIR` cache, `lefthook` and `appimagetool`) in place of a `venv`, without install scripts.
+  - Windows (PowerShell) and Linux installation steps for a project-local `denoenv-{deno-version}` environment (Deno binary, `DENO_DIR` cache, `lefthook` and `appimagetool`), without install scripts.
   - `deno.jsonc` with placeholder project metadata, tasks (`start`, `test`, `check`, `compile`, `compile-appimage`) and an empty import map.
   - Deno and TypeScript `.gitignore`, covering Node.js compatibility, coverage, bundlers, web frameworks, hosting platforms and AppImage outputs.
   - `LICENSE` (GPL-3.0).

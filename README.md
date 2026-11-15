@@ -1,4 +1,4 @@
-<sup>This project has been generated using ['A-JavaScript-Template' (AJT)](https://github.com/a-matthew/a-javascript-template).</sup>
+<sup>This project has been generated using ['A-TypeScript-Template' (ATT)](https://github.com/a-matthew/a-typescript-template).</sup>
 
 # {project-name}
 
@@ -30,7 +30,7 @@
 
 ### Installation
 {...}
-<!-- Deno environment (the 'venv' equivalent: the binary, cache and tools stay inside `denoenv-{deno-version}`) -->
+<!-- Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version}`) -->
   <!-- - Windows (PowerShell)
     - `cd {path}\{project-name}`
     - `Invoke-WebRequest -OutFile deno.zip https://github.com/denoland/deno/releases/download/v{deno-version}/deno-x86_64-pc-windows-msvc.zip`
