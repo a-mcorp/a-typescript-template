@@ -8,7 +8,7 @@
 - Purpose: {project-summary}.
 - Format: {project-format}.
 - License:
-  - This project's license: [GNU General Public License v3.0](LICENSE)
+  - This project's license: [MIT No Attribution](LICENSE) <!-- the template's own licence: in a project created from it, replace `LICENSE`, this line and the licence fields (`deno.jsonc`, AppImage `appdata.xml`) with the project's licence -->
   <!-- - Dependency-1: [{dependency-1-name}]({dependency-1-license}) -->
   <!-- - Dependency-2: [{dependency-2-name}]({dependency-2-license}) -->
 

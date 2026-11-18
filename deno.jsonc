@@ -11,7 +11,7 @@
 {
   "name": "@project-organization/project-name",
   "version": "0.1.0",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT-0",
   "exports": "./src/main.ts",
 
   // Auto-generated: Run with `deno task {task-name}`.

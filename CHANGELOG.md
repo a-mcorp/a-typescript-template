@@ -19,6 +19,7 @@ Template
 ## [Unreleased] - 2026-11-15
 
 ### Changed
+- Licence changed from GPL-3.0-or-later to MIT No Attribution (MIT-0), so projects created from the template choose their own licence; `README.md`, `deno.jsonc` and the AppImage `appdata.xml` follow it, with the AppStream `metadata_license` set to CC0-1.0, since AppStream requires a permissive licence for metadata.
 - `README.md` layout
   - Features and two example screenshots combined in one table: the features span the full width, with the screenshots side by side below (`{example-N-title}` and `{example-N-image}` placeholders, images in `docs/`).
   - Dependencies and Usage placed side by side in a two-column table, keeping their list formatting; the separate Example section was removed, and Repository structure became a level 3 heading.
