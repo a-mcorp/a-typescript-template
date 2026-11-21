@@ -44,4 +44,6 @@ How were the changes tested?
 Anything else?
 -->
 
+- [ ] An assistant helped to write these changes
+
 <!-- All pull request template files must be located in the default branch (typically main) of the repository. Only pull request template files from the default branch are used.-->

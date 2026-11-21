@@ -6,15 +6,15 @@
 // ================================
 
 // https://docs.deno.com/runtime/fundamentals/configuration/
-// Auto-generated: Deno has no fields for authors, keywords or URLs. Keep them in README.md and the AppStream file.
+// Deno has no fields for authors, keywords or URLs. Keep them in README.md and the AppStream file.
 
 {
   "name": "@project-organization/project-name",
   "version": "0.1.0",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT-0",
   "exports": "./src/main.ts",
 
-  // Auto-generated: Run with `deno task {task-name}`.
+  // Run with `deno task {task-name}`.
   "tasks": {
     "start": "deno run src/main.ts",
     "test": "deno test",
@@ -23,10 +23,10 @@
     "compile-appimage": "deno compile --target x86_64-unknown-linux-gnu --output AppImage/Recipe/usr/bin/{project-acronym} src/main.ts"
   },
 
-  // Auto-generated: Dependencies, e.g. "@std/assert": "jsr:@std/assert@^1.0.0". Versions are pinned in `deno.lock`.
+  // Dependencies, e.g. "@std/assert": "jsr:@std/assert@^1.0.0". Versions are pinned in `deno.lock`.
   "imports": {},
 
-  // Auto-generated: Strict type checking, used by `deno check`.
+  // Strict type checking, used by `deno check`.
   "compilerOptions": {
     "strict": true,
     "noImplicitReturns": true,
@@ -38,7 +38,7 @@
     "exactOptionalPropertyTypes": true
   },
 
-  // Auto-generated: Linter settings, used by `deno lint`.
+  // Linter settings, used by `deno lint`.
   "lint": {
     "rules": {
       "tags": ["recommended"],
@@ -54,7 +54,7 @@
     }
   },
 
-  // Auto-generated: Formatter settings (Deno style defaults), used by `deno fmt`.
+  // Formatter settings (Deno style defaults), used by `deno fmt`.
   "fmt": {
     "lineWidth": 80,
     "indentWidth": 2,
