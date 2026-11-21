@@ -1,4 +1,4 @@
-<sup>This project has been generated using ['A-TypeScript-Template' (ATT)](https://github.com/a-matthew/a-typescript-template).</sup>
+<sup>This project has been generated using ['A-TypeScript-Template' (ATT)](https://github.com/a-mcorp/a-typescript-template).</sup>
 
 # {project-name}
 
@@ -135,10 +135,10 @@ Deno environment (the binary, cache and tools stay inside `denoenv-{deno-version
 │   └── pull_request_template.md   # Default pull request template
 ├── AppImage                       # AppImage recipe (AppDir) and build guide
 ├── docs                           # Documentation assets
-├── src                            # Project source code
+├── src                            # Project source code (created with the project)
 ├── CHANGELOG.md                   # Project changelog
 ├── deno.jsonc                     # Project metadata and tool configuration
-├── deno.lock                      # Pinned dependency versions
+├── deno.lock                      # Pinned dependency versions (written by Deno on the first install)
 ├── lefthook.yml                   # Formatters and linters bundle (local CI)
 ├── LICENSE                        # Project license
 └── README.md                      # Project documentation

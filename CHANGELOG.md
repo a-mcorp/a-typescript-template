@@ -16,13 +16,20 @@ Template
 ### Security
 -->
 
-## [Unreleased] - 2026-11-15
+## [1.1.0] - 2026-11-21
+
+### Added
+- `docs/.gitkeep`, so the `docs/` folder for the README's screenshots exists in every copy of the template.
 
 ### Changed
 - Licence changed from GPL-3.0-or-later to MIT No Attribution (MIT-0), so projects created from the template choose their own licence; `README.md`, `deno.jsonc` and the AppImage `appdata.xml` follow it, with the AppStream `metadata_license` set to CC0-1.0, since AppStream requires a permissive licence for metadata.
 - `README.md` layout
   - Features and two example screenshots combined in one table: the features span the full width, with the screenshots side by side below (`{example-N-title}` and `{example-N-image}` placeholders, images in `docs/`).
   - Dependencies and Usage placed side by side in a two-column table, keeping their list formatting; the separate Example section was removed, and Repository structure became a level 3 heading.
+- Links to the repositories point to the 'a-mcorp' organisation on GitHub.
+- `README.md` repository structure: `src` and `deno.lock` are marked as created with the project.
+- Comments no longer carry the "Auto-generated:" prefix, as they have been reviewed.
+- `.github/pull_request_template.md` and `PULL_REQUEST_TEMPLATE/Default.md`: a checkbox in the Comments section marks when an assistant helped to write the changes.
 
 ## [1.0.0] - 2026-11-15
 
